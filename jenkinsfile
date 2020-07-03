@@ -1,18 +1,21 @@
 pipeline{
 	agent any
-	stages ("Start Grid") {
-		steps{
-			sh "docker compose up -d hub chrome firefox --no-colors"
-		}
+	stages {
+		stage("Start Grid") {
+		    steps{
+			    sh "docker compose up -d hub chrome firefox --no-colors"
+		    }
+	    }
+	    stage("Run Tests") {
+		    steps{
+			    sh "docker compose up google-search-chrome google-search-firefox"
+		    }
+	    }
+	    stage("Stop Grid") {
+		    steps{
+			    sh "docker compose down --no-colors"
+		    }
+	    }
 	}
-	stages ("Run Tests") {
-		steps{
-			sh "docker compose up google-search-chrome google-search-firefox"
-		}
-	}
-	stages ("Stop Grid") {
-		steps{
-			sh "docker compose down --no-colors"
-		}
-	}
+	
 }
