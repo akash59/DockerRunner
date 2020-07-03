@@ -13,7 +13,7 @@ pipeline{
 	    }
 	    stage("Stop Grid") {
 		    steps{
-			    sh "docker-compose down --no-color"
+			    sh "docker-compose down"
 		    }
 	    }
 	}
