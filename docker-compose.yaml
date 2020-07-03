@@ -27,7 +27,7 @@ services:
       - cucumber.features=classpath:features
       - cucumber.filter.tags=@Chrome
     volumes:
-      - ./chrome-results:/usr/share/udemy/target
+      - ./output/chrome-results:/usr/share/udemy/test-output
   google-search-firefox:
       image: akash59/cucumber-selenium-docker
       depends_on:
@@ -38,4 +38,4 @@ services:
         - cucumber.features=classpath:features
         - cucumber.filter.tags=@Firefox
       volumes:
-        - ./firefox-results:/usr/share/udemy/target
+        - ./output/firefox-results:/usr/share/udemy/test-output
